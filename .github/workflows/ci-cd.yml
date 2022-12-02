@@ -1,0 +1,53 @@
+name: CI/CD
+on:
+  push:
+    branches:
+      - master
+jobs:
+  golangci:
+    name: linter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.19'
+          check-latest: true
+
+      - run: go version
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run golangci-lint
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: latest
+  tests:
+    needs: golangci
+    runs-on: ubuntu-latest
+    container: golang:latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run tests
+        run: go test -v ./internal/app
+  deploy:
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSHKEY }}
+          script: |
+            cd go-app-template
+            git pull
+            docker system prune -a -f
+            docker-compose up -d --build
