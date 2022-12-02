@@ -2,8 +2,8 @@ package storage
 
 import (
 	"github.com/google/uuid"
+	"go-app-template/internal/service/user/model"
 	"golang.org/x/net/context"
-	"template/internal/service/user/model"
 	"time"
 )
 

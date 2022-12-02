@@ -3,12 +3,12 @@ package user
 import (
 	"context"
 	"github.com/segmentio/kafka-go"
+	"go-app-template/internal/broker"
+	"go-app-template/internal/service/user/model"
+	pb "go-app-template/internal/service/user/proto"
+	"go-app-template/internal/storage"
+	"go-app-template/pkg"
 	"strings"
-	"template/internal/broker"
-	"template/internal/service/user/model"
-	pb "template/internal/service/user/proto"
-	"template/internal/storage"
-	"template/pkg"
 	"time"
 )
 

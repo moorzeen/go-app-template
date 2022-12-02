@@ -1,8 +1,8 @@
 package rest
 
 import (
-	pbAuth "template/internal/service/auth/proto"
-	pb "template/internal/service/user/proto"
+	pbAuth "go-app-template/internal/service/auth/proto"
+	pb "go-app-template/internal/service/user/proto"
 )
 
 type metaResponse struct {

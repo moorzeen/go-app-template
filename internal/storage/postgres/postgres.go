@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/google/uuid"
 	"github.com/jmoiron/sqlx"
-	"template/internal/service/user/model"
+	"go-app-template/internal/service/user/model"
 	"time"
 )
 

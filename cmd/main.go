@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/rs/zerolog/log"
-	"template/internal/app"
+	"go-app-template/internal/app"
 )
 
 func main() {

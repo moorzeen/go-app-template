@@ -8,14 +8,14 @@ import (
 	"github.com/golang-jwt/jwt/v4"
 	"github.com/google/uuid"
 	"github.com/rs/zerolog/log"
+	"go-app-template/internal/service/auth/model"
+	pbAuth "go-app-template/internal/service/auth/proto"
+	"go-app-template/internal/storage"
+	"go-app-template/pkg"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/emptypb"
 	"strings"
-	"template/internal/service/auth/model"
-	pbAuth "template/internal/service/auth/proto"
-	"template/internal/storage"
-	"template/pkg"
 
 	"time"
 )

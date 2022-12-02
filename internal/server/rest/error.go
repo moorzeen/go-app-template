@@ -3,10 +3,10 @@ package rest
 import (
 	"database/sql"
 	"github.com/rs/zerolog/log"
+	"go-app-template/internal/service/auth"
+	"go-app-template/internal/service/user"
 	"net/http"
 	"strings"
-	"template/internal/service/auth"
-	"template/internal/service/user"
 )
 
 func errStatusWithJSON(err error) (int, any) {

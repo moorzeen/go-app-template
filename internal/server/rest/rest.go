@@ -3,11 +3,11 @@ package rest
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/golang/protobuf/jsonpb"
+	"go-app-template/internal/service/auth"
+	pbAuth "go-app-template/internal/service/auth/proto"
+	"go-app-template/internal/service/user"
+	pb "go-app-template/internal/service/user/proto"
 	"net/http"
-	"template/internal/service/auth"
-	pbAuth "template/internal/service/auth/proto"
-	"template/internal/service/user"
-	pb "template/internal/service/user/proto"
 )
 
 type Server struct {

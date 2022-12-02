@@ -3,10 +3,10 @@ package app
 import (
 	"fmt"
 	"github.com/joho/godotenv"
+	"go-app-template/internal/broker"
+	"go-app-template/internal/storage/postgres"
+	"go-app-template/internal/storage/redis"
 	"os"
-	"template/internal/broker"
-	"template/internal/storage/postgres"
-	"template/internal/storage/redis"
 )
 
 type config struct {
