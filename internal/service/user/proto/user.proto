@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package user;
+option go_package = "/pb";
+
+service UserService {
+  rpc Register(Credentials) returns (User) {}
+}
+
+message Credentials {
+  string login = 1;
+  string password = 2;
+}
+
+message User {
+  string id = 1;
+  string login = 2;
+  optional bool active = 3;
+  string createdAt = 4;
+  string updatedAt = 5;
+  string lastLoginAt = 6;
+}
+

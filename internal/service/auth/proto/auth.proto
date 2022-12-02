@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package auth;
+option go_package = "/pb";
+
+import "google/protobuf/empty.proto";
+
+service AuthService {
+  rpc Authorize(Credentials) returns (Tokens) {}
+  rpc Refresh(RefreshToken) returns (Tokens) {}
+  rpc Validate(AccessToken) returns (google.protobuf.Empty) {}
+  rpc Logout(RefreshToken) returns (google.protobuf.Empty) {}
+}
+
+message Credentials {
+  string login = 1;
+  string password = 2;
+  string fingerprints = 3;
+}
+
+message AccessToken {
+  string accessToken = 1;
+}
+
+message RefreshToken {
+  string refreshToken = 1;
+}
+
+message Tokens {
+  string accessToken = 1;
+  string refreshToken = 2;
+}
+
+
