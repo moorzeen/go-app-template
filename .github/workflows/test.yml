@@ -1,10 +1,10 @@
 name: test
 on:
-  pull_request:
-  push:
-    branches:
-      - master
-      - main
+  I #pull_request:
+  #push:
+   # branches:
+    #  - master
+     # - main
 jobs:
   gotest:
     runs-on: ubuntu-latest
