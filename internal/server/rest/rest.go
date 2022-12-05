@@ -2,11 +2,12 @@ package rest
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/golang/protobuf/jsonpb"
 	"go-app-template/internal/service/auth"
 	pbAuth "go-app-template/internal/service/auth/proto"
 	"go-app-template/internal/service/user"
 	pb "go-app-template/internal/service/user/proto"
+	"google.golang.org/protobuf/encoding/protojson"
+	"io"
 	"net/http"
 )
 
@@ -53,7 +54,12 @@ func (srv *Server) Error() chan error {
 func (srv *Server) register(ctx *gin.Context) {
 	var req pb.Credentials
 
-	err := jsonpb.Unmarshal(ctx.Request.Body, &req)
+	body, err := io.ReadAll(ctx.Request.Body)
+	if err != nil {
+		ctx.AbortWithStatusJSON(errStatusWithJSON(err))
+	}
+
+	err = protojson.Unmarshal(body, &req)
 	if err != nil {
 		ctx.AbortWithStatusJSON(errStatusWithJSON(err))
 		return
@@ -79,7 +85,12 @@ func (srv *Server) register(ctx *gin.Context) {
 func (srv *Server) authorize(ctx *gin.Context) {
 	var req pbAuth.Credentials
 
-	err := jsonpb.Unmarshal(ctx.Request.Body, &req)
+	body, err := io.ReadAll(ctx.Request.Body)
+	if err != nil {
+		ctx.AbortWithStatusJSON(errStatusWithJSON(err))
+	}
+
+	err = protojson.Unmarshal(body, &req)
 	if err != nil {
 		ctx.AbortWithStatusJSON(errStatusWithJSON(err))
 		return
