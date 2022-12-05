@@ -8,7 +8,7 @@ jobs:
     container: golang:latest
     steps:
       - name: Checkout master
-        uses: actions/checkout@v2
+        uses: actions/checkout@master
         
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
@@ -16,7 +16,7 @@ jobs:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
           
       - name: Build container image
-        run: docker build -t ${{ secrets.REGISTRY_NAME }}/go-app-template:$(echo $GITHUB_SHA | head -c7) ./app
+        run: docker build -t ${{ secrets.REGISTRY_NAME }}/go-app-template:$(echo $GITHUB_SHA | head -c7) ./
 
       - name: Log in to DigitalOcean Container Registry with short-lived credentials
         run: doctl registry login --expiry-seconds 1200
