@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-example
+  name: go-app-template
   labels:
-    app: python-example
+    app: go-app-template
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: python-example
+      app: go-app-template
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -17,10 +17,10 @@ spec:
   template:
     metadata:
       labels:
-        app: python-example
+        app: go-app-template
     spec:
       containers:
-      - name: python-example
+      - name: go-app-template
         image: <IMAGE>
         ports:
         - containerPort: 80
@@ -33,7 +33,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: python-example-service
+  name: go-app-template
 spec:
   type: LoadBalancer
   ports:
@@ -42,4 +42,4 @@ spec:
       port: 80
       targetPort: 80
   selector:
-    app: python-example
+    app: go-app-template
