@@ -23,7 +23,7 @@ func NewKafkaWriter(cfg *Config) *kafka.Writer {
 	}
 }
 
-func ProduceNewUser(ctx context.Context, payload any, w *kafka.Writer) {
+func ProduceNewUser(ctx context.Context, payload interface{}, w *kafka.Writer) {
 	data, err := json.Marshal(payload)
 	if err != nil {
 		log.Error().Err(err).Msg("failed to marshal kafka message value")
