@@ -1,23 +1,27 @@
+name: Build, push, and deploy
+
+
 on:
   push:
     branches:
-      - master   
+      - master
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: golang:latest
-    steps:
-      - name: Checkout master
-        uses: actions/checkout@v2
+        steps:
+
+    - name: Checkout master
+      uses: actions/checkout@main
+
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
               
       - name: Build container image
-        run: docker build --tag wdwdwdw
+        run: docker build -t xxx .
         
-      - name: Install doctl
-        uses: digitalocean/action-doctl@v2
-        with:
-          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-
       - name: Log in to DigitalOcean Container Registry with short-lived credentials
         run: doctl registry login --expiry-seconds 1200
 
