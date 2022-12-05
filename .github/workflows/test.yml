@@ -6,7 +6,7 @@ on:
       - master
       - main
 jobs:
-  statictest:
+  gotest:
     runs-on: ubuntu-latest
     container: golang:latest
     steps:
