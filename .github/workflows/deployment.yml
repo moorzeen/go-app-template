@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v2
               
       - name: Build container image
-        run: docker build . --file Dockerfile --tag wdwdwdw
+        run: docker build --tag wdwdwdw
         
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
