@@ -1,19 +1,16 @@
 name: test
-
 on:
   pull_request:
   push:
     branches:
       - master
       - main
-
 jobs:
-  statictest:
+  gotest:
     runs-on: ubuntu-latest
     container: golang:latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
       - name: Run tests
         run: go test -v ./internal/app
