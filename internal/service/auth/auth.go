@@ -102,14 +102,17 @@ func (s Service) Authorize(ctx context.Context, credentials *pbAuth.Credentials)
 	}, nil
 }
 
+// Refresh – unimplemented method
 func (s Service) Refresh(ctx context.Context, token *pbAuth.RefreshToken) (*pbAuth.Tokens, error) {
 	return nil, status.Error(codes.Unimplemented, "unimplemented method")
 }
 
+// Validate – unimplemented method
 func (s Service) Validate(ctx context.Context, token *pbAuth.AccessToken) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "unimplemented method")
 }
 
+// Logout – unimplemented method
 func (s Service) Logout(ctx context.Context, token *pbAuth.RefreshToken) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "unimplemented method")
 }

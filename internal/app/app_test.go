@@ -12,6 +12,7 @@ func TestMain(m *testing.M) {
 	os.Exit(code)
 }
 
+// unimplemented test, just template
 func TestFuncName(t *testing.T) {
 	tests := []struct {
 		name             string
