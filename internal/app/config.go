@@ -49,10 +49,7 @@ func loadConfig() (*config, error) {
 	env := os.Getenv("APP_ENV")
 	var envFile string
 	if "" == env {
-		env = "dev"
-		envFile = ".env." + env + ".local"
-	}
-	if "test" == env {
+		env = "local"
 		envFile = ".env." + env
 	}
 	if "production" == env {
