@@ -2,7 +2,6 @@
 
 [![CI/CD](https://github.com/moorzeen/go-app-template/actions/workflows/ci-cd.yml/badge.svg?branch=master)](https://github.com/moorzeen/go-app-template/actions/workflows/ci-cd.yml)
 
-### Description
 This is a simple Go application template using popular technologies and approaches.
 It can be taken as the basis of your own project.
 
@@ -10,22 +9,26 @@ As an example, this application template implements REST and gRPC API for user r
 
 #### Under the hood
 - gRPC/REST server;
-- error handling and logging using Zerolog;
-- working with environment variables and env files;
-- JWT authorization;
-- working with Postgres, Redis, Kafka;
-- autotests;
-- launch the application in Docker.
+- Postgres, Redis, Kafka;
+- Zerolog;
+- Docker containerization with CI/CD;
 
-### Launching the app
-1. Clone the repository as usually:
+### Launching the app locally
+1. Clone the repository as usually and go to project directory:
 ```
-git clone...
+git clone https://github.com/moorzeen/go-app-template
+cd go-app-template
 ```
 
-2. Assemble and run the Docker container with the command:
+2. Run Postgres, Redis and Kafka as the Docker containers:
 ```
-docker-compose...
+docker-compose -f docker-compose.local.yml up -d --build
+````
+
+3. Build and run Go application:
+```
+export GO111MODULE="on"
+go run cmd/main.go
 ````
 
 3. After successfully launching the application, you will see the lines:
@@ -43,7 +46,6 @@ There are two options for sending a request to the server: REST and gRPC
 Handler: `POST /register`
 
 Registration is performed using a login/password pair. Each login is unique.
-After successful registration, the user is automatically authenticated.
 
 Request format:
 ````
@@ -78,5 +80,11 @@ Possible response codes:
 - `409` — login is already occupied;
 - `500` — internal server error.
 
-## Suggest improvements
-...
+## To Do
+1. [ ] complete documentation; 
+2. [ ] implement authorization methods;
+3. [ ] full cover with tests including benchmark test;
+3. [ ] implement a load performance testing tool.
+
+## Contributing
+We would love for you to contribute to `moorzeen/go-app-template`, pull requests are welcome!
