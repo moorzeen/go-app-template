@@ -3,7 +3,7 @@
 [![CI/CD](https://github.com/moorzeen/go-app-template/actions/workflows/ci-cd.yml/badge.svg?branch=master)](https://github.com/moorzeen/go-app-template/actions/workflows/ci-cd.yml)
 
 ### Description
-**Template** is a simple Go application template using popular technologies and approaches.
+This is a simple Go application template using popular technologies and approaches.
 It can be taken as the basis of your own project.
 
 As an example, this application template implements REST and gRPC API for user registration and authorization.
